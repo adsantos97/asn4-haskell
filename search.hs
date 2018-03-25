@@ -9,10 +9,14 @@ sorted_list = [2, 6, 10, 14, 55, 65, 78, 99, 102]
 --       found -> function that returns true if current item is the element
 --       next -> function that returns the part of the data to be searched next
 -- output: element if found or nil if not found
-search haystack needle current_item done found next
- | done needle haystack = []
- | needle found (current_item haystack) = current_item haystack
- | otherwise = search (next needle haystack) needle current_item done found next
+--search haystack needle current_item done found next
+-- | done needle haystack = []
+-- | needle found (current_item haystack) = current_item haystack
+-- | otherwise = search (next needle haystack) needle current_item done found next
+search (x:xs) y current_item done found next
+ | done y (x:xs) = []
+ | found y (current_item (x:xs)) = current_item (x:xs)
+ | otherwise = search (next y (x:xs)) y current_item done found next
 
 -- done functions
 second_empty _ second = null second
