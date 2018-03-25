@@ -17,19 +17,19 @@ sorted_list = [2, 6, 10, 14, 55, 65, 78, 99, 102]
 --search (x:xs) y current_item done found next = current_item (x:xs)
 search lst elm current_item done found next
  | done elm lst = []
- | found elm (current_item lst) = [2, 4, 6] 
- | otherwise = [1, 2, 3] 
+ | found elm (current_item lst) = [current_item lst] 
+ | otherwise = search (next elm lst) elm current_item done found next 
 
 -- done functions
-second_empty y lst
+second_empty elm lst
  | lst == [] = True
  | otherwise = False
-
---second y lst = null lst (same as above)
+--second y lst = null lst --(same as above)
+stop_greater y lst = second_empty y lst || y < (head lst)
 
 -- next functions
 tail_second y (x:xs) = xs 
  
 -- found (==)
 
---search unorted_list '6 head second_empty (==) tail_second
+--search unsorted_list 6 head second_empty (==) tail_second
