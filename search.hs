@@ -13,10 +13,12 @@ sorted_list = [2, 6, 10, 14, 55, 65, 78, 99, 102]
 -- | done needle haystack = []
 -- | needle found (current_item haystack) = current_item haystack
 -- | otherwise = search (next needle haystack) needle current_item done found next
-search (x:xs) y current_item done found next
- | done y (x:xs) = []
- | found y (current_item (x:xs)) = current_item (x:xs)
- | otherwise = search (next y (x:xs)) y current_item done found next
+search [] y current_list = "empty"
+search (x:xs) y current_list = current_list (x:xs)
+
+
+
+
 
 -- done functions
 second_empty _ second = null second
