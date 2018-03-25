@@ -13,18 +13,22 @@ sorted_list = [2, 6, 10, 14, 55, 65, 78, 99, 102]
 -- | done needle haystack = []
 -- | needle found (current_item haystack) = current_item haystack
 -- | otherwise = search (next needle haystack) needle current_item done found next
-search [] y current_list = "empty"
-search (x:xs) y current_list = current_list (x:xs)
-
-
-
-
+--search (x:xs) y found = found x y 
+--search (x:xs) y current_item done found next = current_item (x:xs)
+search lst elm current_item done found next
+ | done elm lst = []
+ | found elm (current_item lst) = [2, 4, 6] 
+ | otherwise = [1, 2, 3] 
 
 -- done functions
-second_empty _ second = null second
+second_empty y lst
+ | lst == [] = True
+ | otherwise = False
+
+--second y lst = null lst (same as above)
 
 -- next functions
-tail_second _ b = tail b 
+tail_second y (x:xs) = xs 
  
 -- found (==)
 
