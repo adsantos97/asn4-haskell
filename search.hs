@@ -24,6 +24,25 @@ tail_second y (x:xs) = xs
 -- found functions
 -- all use (==)
 
+data Tree = Nil | Node (Integer, Tree, Tree)
+  deriving Show
+
+t = Node(5, Node(3, Nil, Node(4, Nil, Nil)), Nil)
+bst = Node(10, 
+        Node(8, 
+          Node(4, Nil, Node(6, Nil, Nil)), 
+          Node(9, Nil, Nil)), 
+        Node(15, Nil, Node(18, Nil, Nil)))
+
+-- ints in tree
+iit Nil = []
+iit (Node(v, l, r)) = (iit l) ++ [v] ++ (iit r)
+
+left Nil = []
+left (Node(v, l, r)) = (left l) ++ [v]
+
+right Nil = []
+right (Node(v, l, r)) = [v] ++ (right r)
 -- test calls
 {-
 search unsorted_list 6 head second_empty (==) tail_second -- first in list
