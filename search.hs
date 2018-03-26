@@ -9,27 +9,32 @@ sorted_list = [2, 6, 10, 14, 55, 65, 78, 99, 102]
 --       found -> function that returns true if current item is the element
 --       next -> function that returns the part of the data to be searched next
 -- output: element if found or nil if not found
---search haystack needle current_item done found next
--- | done needle haystack = []
--- | needle found (current_item haystack) = current_item haystack
--- | otherwise = search (next needle haystack) needle current_item done found next
---search (x:xs) y found = found x y 
---search (x:xs) y current_item done found next = current_item (x:xs)
-search lst elm current_item done found next
- | done elm lst = []
- | found elm (current_item lst) = [current_item lst] 
- | otherwise = search (next elm lst) elm current_item done found next 
+search haystack needle current_item done found next
+ | done needle haystack = []
+ | found needle (current_item haystack) = [current_item haystack] 
+ | otherwise = search (next needle haystack) needle current_item done found next 
 
 -- done functions
-second_empty elm lst
- | lst == [] = True
- | otherwise = False
---second y lst = null lst --(same as above)
-stop_greater y lst = second_empty y lst || y < (head lst)
+second_empty first second = null second 
+stop_greater x lst = second_empty x lst || x < (head lst)
 
 -- next functions
 tail_second y (x:xs) = xs 
  
--- found (==)
+-- found functions
+-- all use (==)
 
---search unsorted_list 6 head second_empty (==) tail_second
+-- test calls
+{-
+search unsorted_list 6 head second_empty (==) tail_second -- first in list
+search unsorted_list 19 head second_empty (==) tail_second -- last in list
+search unsorted_list 3 head second_empty (==) tail_second -- middle in list
+search unsorted_list 9 head second_empty (==) tail_second -- not in list
+
+search sorted_list 2 head stop_greater (==) tail_second -- first in list
+search sorted_list 102 head stop_greater (==) tail_second -- last in list
+search sorted_list 55 head stop_greater (==) tail_second -- middle in list
+search sorted_list 40 head stop_greater (==) tail_second -- not in list
+search sorted_list 1 head stop_greater (==) tail_second -- not in list before first
+search sorted_list 777 head stop_greater (==) tail_second -- not in list beyond last
+-}
