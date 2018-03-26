@@ -1,6 +1,12 @@
 unsorted_list = [6, 7, 4, 45, 7, 76, 3, 67, 7, 63, 19]
 sorted_list = [2, 6, 10, 14, 55, 65, 78, 99, 102]
 
+data Tree = Nil | Node(Integer, Tree, Tree)
+  deriving Show
+
+t = Node(5, Node(3, Nil, Node(4, Nil, Nil)), Nil)
+bst = Node(10, Node(8, Node(4, Nil, Node(6, Nil, Nil)), Node(9, Nil, Nil)), Node(15, Nil, Node(18, Nil, Nil)))
+
 -- purpose: search a data structure for a chosen element
 -- input: haystack -> data structure to search
 --       needle -> element to search for
@@ -18,21 +24,19 @@ search haystack needle current_item done found next
 second_empty first second = null second 
 stop_greater x lst = second_empty x lst || x < (head lst)
 
+second_leaf a Nil = True
+second_leaf a (Node(v, l, r)) = False
+
 -- next functions
-tail_second y (x:xs) = xs 
+tail_second y (x:xs) = xs
+
+go_right_left item Nil = [] 
+go_right_left item (Node(v, l, r)) = 
+  if item < v then (go_right_left item l) ++ [v]
+  else [v] ++ (go_right_left item r)
  
 -- found functions
 -- all use (==)
-
-data Tree = Nil | Node (Integer, Tree, Tree)
-  deriving Show
-
-t = Node(5, Node(3, Nil, Node(4, Nil, Nil)), Nil)
-bst = Node(10, 
-        Node(8, 
-          Node(4, Nil, Node(6, Nil, Nil)), 
-          Node(9, Nil, Nil)), 
-        Node(15, Nil, Node(18, Nil, Nil)))
 
 -- ints in tree
 iit Nil = []
