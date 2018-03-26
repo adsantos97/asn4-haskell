@@ -20,6 +20,8 @@ search haystack needle current_item done found next
  | found needle (current_item haystack) = [current_item haystack] 
  | otherwise = search (next needle haystack) needle current_item done found next 
 
+current_node (Node(v, l, r)) = v
+
 -- done functions
 second_empty first second = null second 
 stop_greater x lst = second_empty x lst || x < (head lst)
@@ -28,12 +30,12 @@ second_leaf a Nil = True
 second_leaf a (Node(v, l, r)) = False
 
 -- next functions
-tail_second y (x:xs) = xs
+tail_second x lst = tail lst
 
 go_right_left item Nil = [] 
 go_right_left item (Node(v, l, r)) = 
-  if item < v then (go_right_left item l) ++ [v]
-  else [v] ++ (go_right_left item r)
+  if item < v then go_right_left item l
+  else go_right_left item r
  
 -- found functions
 -- all use (==)
