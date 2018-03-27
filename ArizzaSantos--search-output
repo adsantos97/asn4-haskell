@@ -1,0 +1,39 @@
+Script started on Tue 27 Mar 2018 10:39:03 AM EDT
+asantos@franklin:~/cs451/asn4-haskell$ ghci Arizza-search.hs
+GHCi, version 7.10.3: http://www.haskell.org/ghc/  :? for help
+[1 of 1] Compiling Main             ( search.hs, interpreted )
+Ok, modules loaded: Main.
+*Main> search unsorted_list 6 head second_empty (==) tail_second
+>[6]
+*Main> search unsorted_list 19 head second_empty (==) tail_second
+>[19]
+*Main> search unsorted_list 3 head second_empty (==) tail_second
+>[3]
+*Main> search unsorted_list 9 head second_empty (==) tail_second
+>[]
+*Main> search sorted_list 2 head stop_greater (==) tail_second
+[2]
+*Main> search sorted_list 102 head stop_greater (==) tail_second
+>[102]
+*Main> search sorted_list 55 head stop_greater (==) tail_second
+>[55]
+*Main> search sorted_list 40 head stop_greater (==) tail_second
+>[]
+*Main> search sorted_list 1 head stop_greater (==) tail_second
+>[]
+*Main> search sorted_list 777 head stop_greater (==) tail_second
+[]
+*Main> search bst 10 thead tempty (==) tnext
+>[10]
+*Main> search bst 4 thead tempty (==) tnext
+>[4]
+*Main> search bst 15 thead tempty (==) tnext
+>[15]
+*Main> search bst 11 thead tempty (==) tnext
+>[]
+*Main> :q
+>Leaving GHCi.
+asantos@franklin:~/cs451/asn4-haskell$ exit
+exit
+
+Script done on Tue 27 Mar 2018 10:41:24 AM EDT
