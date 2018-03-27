@@ -34,8 +34,8 @@ tail_second x lst = tail lst
 
 go_right_left item Nil = [] 
 go_right_left item (Node(v, l, r)) = 
-  if item < v then go_right_left item l
-  else go_right_left item r
+  if item < v then (go_right_left item l)
+  else (go_right_left item r) 
  
 -- found functions
 -- all use (==)
