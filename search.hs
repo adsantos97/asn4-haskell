@@ -32,28 +32,14 @@ second_leaf a (Node(v, l, r)) = False
 -- next functions
 tail_second x lst = tail lst
 
-go_right_left item (Node(_, Nil, Nil)) = Nil 
+go_right_left item Nil = Nil 
 go_right_left item (Node(v, l, r)) =
   if item < v then go_right_left item l
   else go_right_left item r 
  
 -- found functions
 -- all use (==)
-found_bst x Nil = False
-found_bst x (Node(v, l, r))
- | x == v = True
- | otherwise = if x < v then found_bst x l
-               else found_bst x r
 
--- ints in tree
-iit Nil = []
-iit (Node(v, l, r)) = (iit l) ++ [v] ++ (iit r)
-
-left Nil = []
-left (Node(v, l, r)) = (left l) ++ [v]
-
-right Nil = []
-right (Node(v, l, r)) = [v] ++ (right r)
 -- test calls
 {-
 search unsorted_list 6 head second_empty (==) tail_second -- first in list

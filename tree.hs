@@ -8,6 +8,7 @@ bst = Node(10,
           Node(9, Nil, Nil)), 
         Node(15, Nil, Node(18, Nil, Nil)))
 
+--ints in tree
 iit Nil = []
 iit (Node(v,l,r)) = (iit l) ++ [v] ++ (iit r)
 
@@ -32,5 +33,5 @@ tnext needle (Node(v, l, r))
 
 search2 haystack needle current_item done found next
  | done needle haystack = []
- | found needle haystack = [(current_item haystack)]
+ | found needle (current_item haystack) = [(current_item haystack)]
  | otherwise = search2 (next needle haystack) needle current_item done found next
