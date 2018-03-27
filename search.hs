@@ -32,13 +32,18 @@ second_leaf a (Node(v, l, r)) = False
 -- next functions
 tail_second x lst = tail lst
 
-go_right_left item Nil = [] 
-go_right_left item (Node(v, l, r)) = 
-  if item < v then (go_right_left item l)
-  else (go_right_left item r) 
+go_right_left item (Node(_, Nil, Nil)) = Nil 
+go_right_left item (Node(v, l, r)) =
+  if item < v then go_right_left item l
+  else go_right_left item r 
  
 -- found functions
 -- all use (==)
+found_bst x Nil = False
+found_bst x (Node(v, l, r))
+ | x == v = True
+ | otherwise = if x < v then found_bst x l
+               else found_bst x r
 
 -- ints in tree
 iit Nil = []
