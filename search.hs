@@ -38,25 +38,25 @@ tempty a (Node(v, l, r)) = False
 tail_second x lst = tail lst
 
 tnext x (Node(v, l, r))
- | needle < v = l
+ | x < v = l
  | otherwise = r 
 
 -- test calls
 {-
-search unsorted_list 6 head second_empty (==) tail_second -- first in list
-search unsorted_list 19 head second_empty (==) tail_second -- last in list
-search unsorted_list 3 head second_empty (==) tail_second -- middle in list
-search unsorted_list 9 head second_empty (==) tail_second -- not in list
+  search unsorted_list 6 head second_empty (==) tail_second -- first in list
+  search unsorted_list 19 head second_empty (==) tail_second -- last in list
+  search unsorted_list 3 head second_empty (==) tail_second -- middle in list
+  search unsorted_list 9 head second_empty (==) tail_second -- not in list
 
-search sorted_list 2 head stop_greater (==) tail_second -- first in list
-search sorted_list 102 head stop_greater (==) tail_second -- last in list
-search sorted_list 55 head stop_greater (==) tail_second -- middle in list
-search sorted_list 40 head stop_greater (==) tail_second -- not in list
-search sorted_list 1 head stop_greater (==) tail_second -- not in list before first
-search sorted_list 777 head stop_greater (==) tail_second -- not in list beyond last
+  search sorted_list 2 head stop_greater (==) tail_second -- first in list
+  search sorted_list 102 head stop_greater (==) tail_second -- last in list
+  search sorted_list 55 head stop_greater (==) tail_second -- middle in list
+  search sorted_list 40 head stop_greater (==) tail_second -- not in list
+  search sorted_list 1 head stop_greater (==) tail_second -- not in list before first
+  search sorted_list 777 head stop_greater (==) tail_second -- not in list beyond last
 
-search bst 10 thead tempty (==) tnext -- first in tree (root)
-search bst 4 thead tempty (==) tnext -- in left
-search bst 15 thead tempty (==) tnext -- in right
-search bst 11 thead tempty (==) tnext -- not in tree
+  search bst 10 thead tempty (==) tnext -- first in tree (root)
+  search bst 4 thead tempty (==) tnext -- in left
+  search bst 15 thead tempty (==) tnext -- in right
+  search bst 11 thead tempty (==) tnext -- not in tree
 -}
