@@ -20,25 +20,26 @@ search haystack needle current_item done found next
  | found needle (current_item haystack) = [current_item haystack] 
  | otherwise = search (next needle haystack) needle current_item done found next 
 
-current_node (Node(v, l, r)) = v
+-- current_item functions
+-- head used for sorted and unsorted lists
+thead (Node(v, l, r)) = v
 
 -- done functions
 second_empty first second = null second 
 stop_greater x lst = second_empty x lst || x < (head lst)
 
-second_leaf a Nil = True
-second_leaf a (Node(v, l, r)) = False
+tempty a Nil = True
+tempty a (Node(v, l, r)) = False
+ 
+-- found functions
+-- all use (==)
 
 -- next functions
 tail_second x lst = tail lst
 
-go_right_left item Nil = Nil 
-go_right_left item (Node(v, l, r)) =
-  if item < v then go_right_left item l
-  else go_right_left item r 
- 
--- found functions
--- all use (==)
+tnext x (Node(v, l, r))
+ | needle < v = l
+ | otherwise = r 
 
 -- test calls
 {-
@@ -53,4 +54,9 @@ search sorted_list 55 head stop_greater (==) tail_second -- middle in list
 search sorted_list 40 head stop_greater (==) tail_second -- not in list
 search sorted_list 1 head stop_greater (==) tail_second -- not in list before first
 search sorted_list 777 head stop_greater (==) tail_second -- not in list beyond last
+
+search bst 10 thead tempty (==) tnext -- first in tree (root)
+search bst 4 thead tempty (==) tnext -- in left
+search bst 15 thead tempty (==) tnext -- in right
+search bst 11 thead tempty (==) tnext -- not in tree
 -}
