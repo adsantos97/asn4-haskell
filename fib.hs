@@ -20,4 +20,6 @@ tl (Cons (x, f)) = f()
 
 from k = Cons(k, \() -> from (k+1))
 
+fib_seq 0 = [0]
+fib_seq n = fib_seq (n-1) ++ [fibonacci n]
 
