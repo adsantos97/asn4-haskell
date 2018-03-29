@@ -2,21 +2,21 @@ fibonacci 0 = 0
 fibonacci 1 = 1
 fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)
 
-{-fib n
- | n == 10 = []
+--fib n = [fibonacci n | n <- [0..(n-1)]]
+--fib n
+-- | n == 0 = []
+-- | n < 10 = (fibonacci n) : fib (n-1)
+
+{-fib2 n
+ | n == 0 = []
+ | n < 10 = (fibonacci n) : fib2 (n-1)
+-}
+
+fib n
  | n == 0 = [n]
- | n == 1 = [n]
- | otherwise = n:(fib (n-1) + fib (n-2))
--}
+ | otherwise = fib (n-1) ++ [n]
 
-{-fib n
- | n == 0 = 0:[]
- | n == 1 = 0:1:[]
- | n == 2 = 0:1:1:[]
- | n == 3 = 0:1:1:2:[]
- | otherwise = [0, 1, 1, 2, 3]
--}
-
-fib n = [fibonacci n | n <- [1..n]]
-
---repeat' x = x:repeat' x 
+range a b
+ | a == b = []
+ | a > b = a : range (a-1) b
+ | a < b = a : range (a+1) b
