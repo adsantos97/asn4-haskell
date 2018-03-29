@@ -13,8 +13,8 @@ fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)
 -}
 
 fib n
- | n == 0 = [n]
- | otherwise = fib (n-1) ++ [n]
+ | n == 0 = [fibonacci n]
+ | otherwise = fib (n-1) ++ [fibonacci n]
 
 range a b
  | a == b = []
