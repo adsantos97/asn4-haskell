@@ -27,3 +27,8 @@ fib n = fib (n-1) ++ [fibonacci n]
 fib_seq (Cons(0,_)) = [0]
 fib_seq n = fib_seq (tl n) ++ [fibonacci (hd n)]
 
+--fib_stream (Cons(0,_)) = [0]
+--fib_stream n = Cons (hd n, \() -> fib_stream (tl n) ++ fibonacci (hd n))
+
+fuckU 11 = []
+fuckU n = [fibonacci n] ++ fuckU (n+1)
