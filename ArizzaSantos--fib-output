@@ -1,0 +1,34 @@
+Script started on Thu 29 Mar 2018 09:00:47 PM EDT
+asantos@snoopy:~/cs451/asn4-haskell$ ghci Arizza-fib.hs
+GHCi, version 7.10.3: http://www.haskell.org/ghc/  :? for help
+[1 of 1] Compiling Main             ( Arizza-fib.hs, interpreted )
+Ok, modules loaded: Main.
+Main> ps
+>Cons(0, fn())
+Main> ps_hd
+>0
+Main> ps_tl
+>Cons(1, fn())
+Main> tl it
+>Cons(1, fn())
+Main> tl it
+>Cons(2, fn())
+Main> tl it
+>Cons(3, fn())
+Main> tl it
+>Cons(5, fn())
+Main> tl it
+>Cons(8, fn())
+Main> tl it
+>Cons(13, fn())
+Main> tl it
+>Cons(21, fn())
+Main> tl it
+>Cons(34, fn())
+Main> tl it
+>Cons(55, fn())
+>Leaving GHCi.
+asantos@snoopy:~/cs451/asn4-haskell$ exit
+exit
+
+Script done on Thu 29 Mar 2018 09:01:33 PM EDT
