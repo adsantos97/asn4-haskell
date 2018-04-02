@@ -38,6 +38,4 @@ matches_helper lst x rsf
 matches_tail x lst = matches_helper lst x 0
 
 -- fold of matches function
-add_match a b = if a == b then b + 1 else b 
-
-matches_fold x lst = fold lst 0  tail
+matches_fold x lst = fold lst 0 () tail
