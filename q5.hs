@@ -23,4 +23,21 @@ compare_smallest a b = if a < b then a else b
 
 smallest_fold lst = fold lst (head lst) compare_smallest tail
 
+-- non-tail recursive of matches function
+matches x [] = 0
+matches x lst
+ | x == (head lst) = 1 + matches x (tail lst)
+ | otherwise = matches x (tail lst)
 
+-- tail recursive of matches function
+matches_helper [] x rsf = rsf
+matches_helper lst x rsf
+ | x == (head lst) = matches_helper (tail lst) x (1 + rsf)
+ | otherwise = matches_helper (tail lst) x rsf 
+
+matches_tail x lst = matches_helper lst x 0
+
+-- fold of matches function
+add_match a b = if a == b then b + 1 else b 
+
+matches_fold x lst = fold lst 0  tail
