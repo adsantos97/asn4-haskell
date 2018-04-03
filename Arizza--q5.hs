@@ -1,5 +1,3 @@
-ul = [6, 2, 7, 1]
-
 -- fold function
 fold [] finish next gen = finish
 fold (x:xs) finish next gen = next x (fold (gen (x:xs)) finish next gen)
@@ -38,4 +36,7 @@ matches_helper lst x rsf
 matches_tail x lst = matches_helper lst x 0
 
 -- fold of matches function
-matches_fold x lst = fold lst 0 () tail
+matches_fold x lst = let 
+                       is_x a b = if x == a then 1 + b
+                                  else b
+                     in fold lst 0 (is_x) tail
